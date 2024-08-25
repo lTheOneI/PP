@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CoinsandScore : MonoBehaviour
 {
+    
     GameLogic gameLogicScript;
 
     private void OnMouseDown()
@@ -12,4 +13,5 @@ public class CoinsandScore : MonoBehaviour
         GameLogic.coins++;
         Destroy(this.gameObject);
     }
+
 }

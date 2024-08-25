@@ -3,44 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameLogic : MonoBehaviour
 {
     public static int currentScore;
     public static int coins =10;
+    public static int highScore;
 
     [SerializeField] GameObject antPrefab;
     [SerializeField] GameObject butterflyPrefab;
     [SerializeField] GameObject screen;
     [SerializeField] TMP_Text currentScoreText;
-    [SerializeField] GameObject cake;
 
+    public GameObject cake;
     public TMP_Text coinsText;
-    private int spawnWaveCount = 4;
-    private int count;
+
+    private int spawnWaveCount = 5;
+    private int numberPerWave = 8;
 
     private Vector3 spawnPos;
-    private Vector3 direction;
     private Quaternion EnemyRotation;
-    private Vector3 Var = new Vector3 (1, 1, 0);
     void Start()
     {
-        direction = (cake.transform.position - antPrefab.transform.position);
-        EnemyRotation = Quaternion.LookRotation(direction);
-        Debug.Log(EnemyRotation);
-        StartCoroutine(SpawnAnts());
-        
-        if (count <2) 
-        {
-        StartCoroutine(SpawnButterflies());
-        }
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        StartCoroutine(SpawnAnts());     
     }
     private void Update()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("Ant");
-        count = objects.Length;
+        //Set new Highscore
         currentScoreText.text = "Score:" + currentScore;
-        coinsText.text = "Coins:" + coins;
+        if (currentScore > highScore)
+        {
+            highScore = currentScore;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            Debug.Log(PlayerPrefs.GetInt("HighScore"));
+        }
+        coinsText.text = coins.ToString();
     }
 
     IEnumerator SpawnAnts()
@@ -48,7 +47,7 @@ public class GameLogic : MonoBehaviour
         //Spawn Enemy Wave an random locations 
         for (int i = 0;i<spawnWaveCount;i++) 
         {
-            for (int a = 0; a < 5; a++)
+            for (int a = 0; a < numberPerWave; a++)
             {
                 RectTransform rectTransform = screen.GetComponent<RectTransform>();
                 float width = rectTransform.rect.width;
@@ -58,9 +57,9 @@ public class GameLogic : MonoBehaviour
                 Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), Mathf.Cos(angle));
                 float distance = Random.Range(1f, 3f);
                 spawnPos = Vector3.zero + direction * (CenterSize.magnitude / 2 + distance);
-                Instantiate(antPrefab, spawnPos, EnemyRotation);
+                Instantiate(antPrefab, spawnPos, Quaternion.identity);
             }
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(5.0f);
         }
         yield return null;
     }
@@ -69,7 +68,7 @@ public class GameLogic : MonoBehaviour
     {
         for (int i = 0; i < spawnWaveCount; i++)
         {
-            for (int a = 0; a < 5; a++)
+            for (int a = 0; a < numberPerWave; a++)
             {
                 RectTransform rectTransform = screen.GetComponent<RectTransform>();
                 float width = rectTransform.rect.width;
@@ -85,7 +84,5 @@ public class GameLogic : MonoBehaviour
         }
         yield return null;
     }
-
-    
 
 }

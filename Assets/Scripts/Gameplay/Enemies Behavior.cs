@@ -8,11 +8,22 @@ public class EnemiesBehavior : MonoBehaviour
 
     GameLogic gameLogicScript;
     private float speed = 1f;
+    [SerializeField] Transform headAnt;
     [SerializeField] GameObject coinPrefab;
     private int rate;
-    
+    private float speedRotate = 1f;
+    private float rotationModifier;
+
+    private Vector3 direction;
+
+
     void FixedUpdate()
     {
+        //Direct to the target
+        gameLogicScript = FindObjectOfType<GameLogic>();
+        direction = gameLogicScript.cake.transform.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;  
         //Move the Enemies
         transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
     }
@@ -27,7 +38,6 @@ public class EnemiesBehavior : MonoBehaviour
         }
 
         //Gain Score
-        gameLogicScript = FindObjectOfType<GameLogic>();
         GameLogic.currentScore = GameLogic.currentScore +10;
 
         //Destroy Enemies

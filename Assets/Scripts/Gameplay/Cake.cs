@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Cake : MonoBehaviour
+{
+    private int maxHealth = 20; 
+    private int currentHealth;
+    private UIManage UIManageScript;
+
+    void Start()
+    {
+        currentHealth = maxHealth; 
+    }
+
+    
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ant"))
+        {
+            currentHealth--;
+            Destroy(collision.gameObject);
+        }
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        DestroyObjectWithTag();
+        UIManageScript = FindObjectOfType<UIManage>();
+        UIManageScript.losePanel.SetActive(true);
+        Destroy(gameObject);
+    }
+
+    void DestroyObjectWithTag()
+    {
+        GameObject[] Ants = GameObject.FindGameObjectsWithTag("Ant");
+        foreach (GameObject obj in Ants)
+        {
+            Destroy(obj);
+        }
+    }
+
+}

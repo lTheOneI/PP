@@ -8,24 +8,28 @@ using UnityEngine.SceneManagement;
 public class UIManage : MonoBehaviour
 {
     [SerializeField] Button playBtn;
-    [SerializeField] Button settingBtn;
-    [SerializeField] GameObject settingPanel;
+    [SerializeField] Button mainMenuBtn;
 
-    public TMP_Text highScore;
+    public GameObject losePanel;
+    public TMP_Text highScoreText;
 
-    void Start()
+    void Awake()
     {
         playBtn.onClick.AddListener(startGame);
-        settingBtn.onClick.AddListener(openSettingPanel);
+        mainMenuBtn.onClick.AddListener(mainMenu);
+        highScoreText.text = "HIGHSCORE:" + PlayerPrefs.GetInt("HighScore");
     }
 
-    void openSettingPanel()
+
+
+    void mainMenu()
     {
-        settingPanel.SetActive(true);
+        SceneManager.LoadScene("Main");
     }
-
     void startGame()
     {
         SceneManager.LoadScene("Ingame");
+        GameLogic.currentScore = 0;
+        GameLogic.coins = 10;
     }
 }

@@ -5,20 +5,25 @@ using UnityEngine;
 public class TurretBehavior : MonoBehaviour
 {
     public GameObject bulletPrefab; 
-    public Transform firePoint; // Assign the fire point in the Inspector
-    public float fireRate = 1.0f; // Time between shots
+    public Transform bulletSpawnPoint; 
+    public float fireRate = 0.7f; 
+    private float nextFireTime = 0f;
 
-    void Start()
+    void Update()
     {
-        StartCoroutine(Shoot());
+        if (Time.time >= nextFireTime)
+        {
+            Shoot();
+            nextFireTime = Time.time +fireRate;
+        }
     }
 
-    IEnumerator Shoot()
+    void Shoot()
     {
-        while (true)
-        {
-            Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            yield return new WaitForSeconds(fireRate);
-        }
+        // Instantiate the bullet at the spawn point
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        // Add force to the bullet to make it move
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        rb.AddForce(bulletSpawnPoint.forward * 20f, ForceMode.Impulse);
     }
 }
