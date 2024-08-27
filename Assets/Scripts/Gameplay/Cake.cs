@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Cake : MonoBehaviour
 {
     private int maxHealth = 20; 
-    private int currentHealth;
+    public static int currentHealth;
     private UIManage UIManageScript;
 
     void Start()

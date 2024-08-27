@@ -15,6 +15,7 @@ public class GameLogic : MonoBehaviour
     [SerializeField] GameObject butterflyPrefab;
     [SerializeField] GameObject screen;
     [SerializeField] TMP_Text currentScoreText;
+    [SerializeField] TMP_Text healthText;
 
     public GameObject cake;
     public TMP_Text coinsText;
@@ -24,12 +25,17 @@ public class GameLogic : MonoBehaviour
 
     private Vector3 spawnPos;
     private Quaternion EnemyRotation;
+    private int waveCount =0;
     void Start()
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         StartCoroutine(SpawnAnts());     
+        if (waveCount > 4)
+        {
+            StartCoroutine(SpawnButterflies());
+        }
     }
-    private void Update()
+    void Update()
     {
         //Set new Highscore
         currentScoreText.text = "Score:" + currentScore;
@@ -40,6 +46,8 @@ public class GameLogic : MonoBehaviour
             Debug.Log(PlayerPrefs.GetInt("HighScore"));
         }
         coinsText.text = coins.ToString();
+
+        healthText.text = "Remaining HP: " + Cake.currentHealth;
     }
 
     IEnumerator SpawnAnts()
@@ -59,9 +67,12 @@ public class GameLogic : MonoBehaviour
                 spawnPos = Vector3.zero + direction * (CenterSize.magnitude / 2 + distance);
                 Instantiate(antPrefab, spawnPos, Quaternion.identity);
             }
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(3f);
+            waveCount++;
+            Debug.Log("Wave Count:" + waveCount);
+
         }
-        yield return null;
+        yield return new WaitForSeconds(5f);
     }
 
     IEnumerator SpawnButterflies()
@@ -81,8 +92,9 @@ public class GameLogic : MonoBehaviour
                 Instantiate(butterflyPrefab, spawnPos, EnemyRotation);
             }
             yield return new WaitForSeconds(3.0f);
+
         }
-        yield return null;
+        yield return new WaitForSeconds(5f);
     }
 
 }

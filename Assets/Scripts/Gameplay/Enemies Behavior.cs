@@ -7,12 +7,11 @@ public class EnemiesBehavior : MonoBehaviour
 {
 
     GameLogic gameLogicScript;
-    private float speed = 1f;
+    private float speed = 0.7f;
     [SerializeField] Transform headAnt;
     [SerializeField] GameObject coinPrefab;
     private int rate;
-    private float speedRotate = 1f;
-    private float rotationModifier;
+
 
     private Vector3 direction;
 
