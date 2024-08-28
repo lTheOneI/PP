@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject shopPanel;
+
+    public Items_Scriptable Items;
+
+    private void OnEnable()
     {
-        
+        Instantiate(shopPanel);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

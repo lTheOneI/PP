@@ -15,7 +15,6 @@ public class Cake : MonoBehaviour
     {
         currentHealth = maxHealth; 
     }
-
     
     void OnCollisionEnter2D(Collision2D collision)
     {

@@ -34,7 +34,7 @@ public class GameLogic : MonoBehaviour
     void Update()
     {
         //Set new Highscore
-        currentScoreText.text = "Score:" + currentScore;
+        currentScoreText.text = "Score: " + currentScore;
         if (currentScore > highScore)
         {
             highScore = currentScore;
