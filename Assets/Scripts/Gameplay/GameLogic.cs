@@ -23,8 +23,7 @@ public class GameLogic : MonoBehaviour
     private int spawnWaveCount = 5;
     private int numberPerWave = 8;
 
-    private Vector3 spawnPos;
-    private Quaternion EnemyRotation;
+    private Vector2 spawnPos;
     private int waveCount =0;
     void Start()
     {
@@ -47,7 +46,7 @@ public class GameLogic : MonoBehaviour
         }
         coinsText.text = coins.ToString();
 
-        healthText.text = "Remaining HP: " + Cake.currentHealth;
+        healthText.text = "Current HP: " + Cake.currentHealth;
     }
 
     IEnumerator SpawnAnts()
@@ -60,12 +59,13 @@ public class GameLogic : MonoBehaviour
                 RectTransform rectTransform = screen.GetComponent<RectTransform>();
                 float width = rectTransform.rect.width;
                 float height = rectTransform.rect.height;
-                Vector3 CenterSize = new Vector2(width / 130, height / 130);
-                float angle = Random.RandomRange(0f, 360f);
-                Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), Mathf.Cos(angle));
+                Vector2 CenterSize = new Vector2(width / 130, height / 130);
+                float angle = Random.Range(0f, 360f);
+                Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 float distance = Random.Range(1f, 3f);
-                spawnPos = Vector3.zero + direction * (CenterSize.magnitude / 2 + distance);
-                Instantiate(antPrefab, spawnPos, Quaternion.identity);
+                spawnPos = Vector2.zero + direction * (CenterSize.magnitude / 2 + distance);
+                Instantiate(antPrefab, spawnPos,transform.rotation);
+                Debug.Log("SpawnRotation" + transform.rotation);
             }
             yield return new WaitForSeconds(3f);
             waveCount++;
@@ -84,12 +84,12 @@ public class GameLogic : MonoBehaviour
                 RectTransform rectTransform = screen.GetComponent<RectTransform>();
                 float width = rectTransform.rect.width;
                 float height = rectTransform.rect.height;
-                Vector3 CenterSize = new Vector2(width / 130, height / 130);
-                float angle = Random.RandomRange(0f, 360f);
-                Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), Mathf.Cos(angle));
+                Vector2 CenterSize = new Vector2(width / 130, height / 130);
+                float angle = Random.Range(0f, 360f);
+                Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
                 float distance = Random.Range(1f, 3f);
-                spawnPos = Vector3.zero + direction * (CenterSize.magnitude / 2 + distance);
-                Instantiate(butterflyPrefab, spawnPos, EnemyRotation);
+                spawnPos = Vector2.zero + direction * (CenterSize.magnitude / 2 + distance);
+                Instantiate(butterflyPrefab, spawnPos, cake.transform.rotation);
             }
             yield return new WaitForSeconds(3.0f);
 

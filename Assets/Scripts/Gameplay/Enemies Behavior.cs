@@ -6,9 +6,7 @@ using UnityEngine;
 public class EnemiesBehavior : MonoBehaviour
 {
 
-    GameLogic gameLogicScript;
     private float speed = 0.7f;
-    [SerializeField] Transform headAnt;
     [SerializeField] GameObject coinPrefab;
     private int rate;
 
@@ -18,11 +16,6 @@ public class EnemiesBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Direct to the target
-        gameLogicScript = FindObjectOfType<GameLogic>();
-        direction = gameLogicScript.cake.transform.position - transform.position;
-        Quaternion rotation = Quaternion.LookRotation(direction);
-        transform.rotation = rotation;  
         //Move the Enemies
         transform.position = Vector3.MoveTowards(transform.position, Vector3.zero, speed * Time.deltaTime);
     }
