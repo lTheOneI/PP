@@ -9,6 +9,8 @@ public class Cake : MonoBehaviour
     public static int currentHealth;
     private UIManage UIManageScript;
 
+
+
     void Start()
     {
         currentHealth = maxHealth; 
@@ -20,6 +22,11 @@ public class Cake : MonoBehaviour
         if (collision.gameObject.CompareTag("Ant"))
         {
             currentHealth--;
+            Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Butterfly"))
+        {
+            currentHealth = currentHealth - 3;
             Destroy(collision.gameObject);
         }
 

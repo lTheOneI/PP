@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ant
   - Cake
+  - Butterfly
   layers:
   - Default
   - TransparentFX

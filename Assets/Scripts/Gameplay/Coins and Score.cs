@@ -11,6 +11,7 @@ public class CoinsandScore : MonoBehaviour
     private void OnMouseDown()
     {
         GameLogic.coins++;
+        Debug.Log("CoinCollected");
         Destroy(this.gameObject);
     }
 

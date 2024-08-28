@@ -13,6 +13,7 @@ public class GameLogic : MonoBehaviour
 
     [SerializeField] GameObject antPrefab;
     [SerializeField] GameObject butterflyPrefab;
+
     [SerializeField] GameObject screen;
     [SerializeField] TMP_Text currentScoreText;
     [SerializeField] TMP_Text healthText;
@@ -21,7 +22,7 @@ public class GameLogic : MonoBehaviour
     public TMP_Text coinsText;
 
     private int spawnWaveCount = 5;
-    private int numberPerWave = 8;
+    private int numberPerWave = 5;
 
     private Vector2 spawnPos;
     private int waveCount =0;
@@ -29,10 +30,6 @@ public class GameLogic : MonoBehaviour
     {
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         StartCoroutine(SpawnAnts());     
-        if (waveCount > 4)
-        {
-            StartCoroutine(SpawnButterflies());
-        }
     }
     void Update()
     {
@@ -65,11 +62,13 @@ public class GameLogic : MonoBehaviour
                 float distance = Random.Range(1f, 3f);
                 spawnPos = Vector2.zero + direction * (CenterSize.magnitude / 2 + distance);
                 Instantiate(antPrefab, spawnPos,transform.rotation);
-                Debug.Log("SpawnRotation" + transform.rotation);
             }
             yield return new WaitForSeconds(3f);
             waveCount++;
-            Debug.Log("Wave Count:" + waveCount);
+            if (waveCount > 4)
+            {
+                StartCoroutine(SpawnButterflies());
+            }
 
         }
         yield return new WaitForSeconds(5f);
