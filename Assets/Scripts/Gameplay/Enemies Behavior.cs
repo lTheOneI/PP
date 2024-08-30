@@ -16,6 +16,7 @@ public class EnemiesBehavior : MonoBehaviour
     private float enemyspeed;
     private int rate;
     private int addScore;
+    private int enemydamage;
 
     public Datatype Enemy;
     [SerializeField] GameObject coinPrefab;
@@ -29,16 +30,19 @@ public class EnemiesBehavior : MonoBehaviour
                 enemyHealth = 1;
                 enemyspeed = 0.6f;
                 addScore = 10;
+                enemydamage = 1;
                 break;
             case Datatype.Butterlfy:
                 enemyHealth = 3;
                 enemyspeed = 0.3f;
                 addScore = 20;
+                enemydamage = 2;
                 break;
             case Datatype.Beetle:
                 enemyHealth = 3;
                 enemyspeed = 0.2f;
                 addScore = 20;
+                enemydamage = 3;
                 break;
         }
     }
