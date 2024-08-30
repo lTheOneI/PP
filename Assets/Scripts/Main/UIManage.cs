@@ -15,7 +15,10 @@ public class UIManage : MonoBehaviour
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject settingPanel;
 
-    public GameObject losePanel;
+    public GameObject finalPanel;
+    public GameObject loseText;
+    public GameObject winText;
+
     [SerializeField] TMP_Text highScoreText;
     [SerializeField] TMP_Text finalScore;
 

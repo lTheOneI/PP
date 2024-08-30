@@ -2,20 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class Cake : MonoBehaviour
 {
     private int maxHealth = 20; 
     public static int currentHealth;
-    private UIManage UIManageScript;
+    private UIManage uiManageScript;
+    private GameLogic gameLogicScript;
 
-
-
+    GameObject[] Ants, Butterflies, Beetles;
+    string[] tags = {"Ant","Butterfly"};
     void Start()
     {
-        currentHealth = maxHealth; 
+        uiManageScript = FindObjectOfType<UIManage>();
+        gameLogicScript = FindObjectOfType<GameLogic>();
+        currentHealth = maxHealth;
     }
-    
+
+    void Update()
+    {
+       if (gameLogicScript.waveCount > 0) 
+        {
+            Ants = GameObject.FindGameObjectsWithTag("Ant");
+            Butterflies = GameObject.FindGameObjectsWithTag("Butterfly");
+            Beetles = GameObject.FindGameObjectsWithTag("Beetle");
+        }
+        int enemiesNumber = Ants.Length + Butterflies.Length + Beetles.Length;
+        Debug.Log("Number of Enemies: " + enemiesNumber);
+         if (enemiesNumber <1)
+        {
+            uiManageScript.finalPanel.SetActive(true);
+            uiManageScript.winText.SetActive(true);
+        }
+
+    }
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ant"))
@@ -23,7 +45,8 @@ public class Cake : MonoBehaviour
             currentHealth--;
             Destroy(collision.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Butterfly"))
+        else if (collision.gameObject.CompareTag("Butterfly") 
+            || collision.gameObject.CompareTag("Beetle"))
         {
             currentHealth = currentHealth - 3;
             Destroy(collision.gameObject);
@@ -36,19 +59,11 @@ public class Cake : MonoBehaviour
     }
     void Die()
     {
-        DestroyObjectWithTag();
-        UIManageScript = FindObjectOfType<UIManage>();
-        UIManageScript.losePanel.SetActive(true);
+        uiManageScript.finalPanel.SetActive(true);
+        uiManageScript.loseText.SetActive(true);
         Destroy(gameObject);
     }
 
-    void DestroyObjectWithTag()
-    {
-        GameObject[] Ants = GameObject.FindGameObjectsWithTag("Ant");
-        foreach (GameObject obj in Ants)
-        {
-            Destroy(obj);
-        }
-    }
+    
 
 }

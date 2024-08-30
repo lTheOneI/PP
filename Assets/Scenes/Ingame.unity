@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8783487
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3225,8 +3225,8 @@ MonoBehaviour:
   shopPanel: {fileID: 649521920}
   settingPanel: {fileID: 1560372872}
   finalPanel: {fileID: 273684390}
-  winText: {fileID: 1361574172}
   loseText: {fileID: 753687274}
+  winText: {fileID: 1361574172}
   highScoreText: {fileID: 0}
   finalScore: {fileID: 1721478048}
 --- !u!114 &2090561253
@@ -3249,6 +3249,7 @@ MonoBehaviour:
   healthText: {fileID: 1747469355}
   cake: {fileID: 2062707246}
   coinsText: {fileID: 1741982138}
+  waveCount: 0
 --- !u!4 &2090561254
 Transform:
   m_ObjectHideFlags: 0

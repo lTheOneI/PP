@@ -26,7 +26,7 @@ public class GameLogic : MonoBehaviour
 
     private int spawnWaveCount = 10;
     private int numberPerWave = 5;
-    private int waveCount = 0;
+    public int waveCount = 0;
 
     private Vector2 spawnPos;
     private RectTransform rectTransform;
