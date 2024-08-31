@@ -28,8 +28,9 @@ public class Cake : MonoBehaviour
             Butterflies = GameObject.FindGameObjectsWithTag("Butterfly");
             Beetles = GameObject.FindGameObjectsWithTag("Beetle");
         }
+
+       //Identify number of enemy currently in game
         int enemiesNumber = Ants.Length + Butterflies.Length + Beetles.Length;
-        Debug.Log("Number of Enemies: " + enemiesNumber);
          if (enemiesNumber <1)
         {
             uiManageScript.finalPanel.SetActive(true);
@@ -38,6 +39,7 @@ public class Cake : MonoBehaviour
 
     }
 
+    //Collison between cake and enemies
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Ant"))

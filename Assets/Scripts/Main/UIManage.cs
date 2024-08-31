@@ -33,12 +33,12 @@ public class UIManage : MonoBehaviour
                 mainMenuBtn.onClick.AddListener(GoToMainMenu);
                 pauseBtn.onClick.AddListener(PauseGame);
                 continueBtn.onClick.AddListener(ContinueGame);
-                settingBtn.onClick.AddListener(OpenClose_Settings);
                 shopBtn.onClick.AddListener(OpenClose_ShopPanel);
             }
         }
         //Display highScore in Start Menu
         highScoreText.text = "HIGHSCORE: " + PlayerPrefs.GetInt("HighScore");
+
 
     }
 
@@ -51,6 +51,14 @@ public class UIManage : MonoBehaviour
         else if (GameLogic.currentScore < PlayerPrefs.GetInt("HighScore"))
         {
             finalScore.text = "Your Score: " + GameLogic.currentScore;
+        }
+        if (settingPanel.activeSelf)
+        {
+            PauseGame();
+        }
+        else if (!settingPanel.activeSelf)
+        {
+            ContinueGame();
         }
     }
 
@@ -68,19 +76,6 @@ public class UIManage : MonoBehaviour
         continueBtn.gameObject.SetActive(false);
     }
 
-    void OpenClose_Settings()
-    {
-        if (settingPanel.activeSelf == false)
-        {
-            Time.timeScale = 0;
-            settingPanel.SetActive(true);
-        }
-        else if (settingPanel.activeSelf == true)
-        {
-            Time.timeScale = 1;
-            settingPanel.SetActive(false);
-        }
-    }
     void GoToMainMenu()
     {
         SceneManager.LoadScene("Main");
