@@ -7,7 +7,6 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameLogic : MonoBehaviour
 {
-    UIManage uiManageScript;
 
     public static int currentScore;
     public static int coins =10;
@@ -34,6 +33,7 @@ public class GameLogic : MonoBehaviour
     private Vector2 screenSize;
     void Start()
     {
+
         //Identify the ScreenSize
         rectTransform = screen.GetComponent<RectTransform>();
         width = rectTransform.rect.width;
