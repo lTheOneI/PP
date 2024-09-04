@@ -27,6 +27,7 @@ public class UIManage : MonoBehaviour
     [Header("Audio Sources")]
     public AudioSource musicSource;
     public AudioSource soundSource;
+    public AudioSource buttonSource;
 
     //Text to Display
     [Header("Text Fiels")]
@@ -66,6 +67,7 @@ public class UIManage : MonoBehaviour
 
     public void PauseGame()
     {
+        buttonSource.Play();
         musicSource.Pause();
         Debug.Log("Music Paused");
         Time.timeScale = 0;
@@ -75,6 +77,7 @@ public class UIManage : MonoBehaviour
 
     public void ContinueGame()
     {
+        buttonSource.Play();
         musicSource.UnPause();
         Time.timeScale = 1;
         pauseBtn.gameObject.SetActive(true);
@@ -83,11 +86,13 @@ public class UIManage : MonoBehaviour
 
     void GoToMainMenu()
     {
+        buttonSource.Play();
         SceneManager.LoadScene("Main");
     }
 
     public void StartGame()
     {
+        buttonSource.Play();
         Destroy(cake);
         SceneManager.LoadScene("Ingame");
         GameLogic.currentScore = 0;
@@ -96,6 +101,7 @@ public class UIManage : MonoBehaviour
 
     void OpenClose_ShopPanel()
     {
+        buttonSource.Play();
         if (shopPanel.activeSelf==false)
         shopPanel.SetActive(true);
         else if (shopPanel.activeSelf ==true)

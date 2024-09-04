@@ -4,9 +4,6 @@ using Unity.Notifications.iOS;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using System;
-using UnityEditor.SearchService;
-using UnityEngine.SceneManagement;
 
 public class SettingMenu : MonoBehaviour
 {
@@ -51,8 +48,11 @@ public class SettingMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("musicVolume", volumeMusicSlider.value);
         PlayerPrefs.SetFloat("soundVolume", volumeSoundSlider.value);
+
         uiManageScript.soundSource.volume = volumeSoundSlider.value;
         uiManageScript.musicSource.volume = volumeMusicSlider.value;
+        uiManageScript.buttonSource.volume = volumeSoundSlider.value;
+
         Debug.Log("Music Volume: " + PlayerPrefs.GetFloat("musicVolume"));
         Debug.Log("Sound Volume: " + PlayerPrefs.GetFloat("soundVolume"));
     }

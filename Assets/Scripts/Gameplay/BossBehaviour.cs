@@ -4,15 +4,39 @@ using UnityEngine;
 
 public class BossBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    GameLogic gameLogicScript;
+
+    public enum Bosses
     {
-        
+        Beetle,
+        Ladybug,
+        Boss
     }
 
-    // Update is called once per frame
-    void Update()
+    public Bosses BossType;
+
+    private void OnDestroy()
     {
-        
+        switch (BossType)
+        {
+            case Bosses.Beetle:
+                for(int i = 0; i<10; i++)
+                {
+                    Instantiate(gameLogicScript.antPrefab, transform.position, Quaternion.identity);
+                }
+                break;
+            case Bosses.Ladybug:
+                for (int i = 0; i<10; i++)
+                {
+                    Instantiate(gameLogicScript.butterflyPrefab, transform.position, Quaternion.identity);
+                }
+                break;
+            case Bosses.Boss:
+                for (int i=0; i<10; i++)
+                {
+                    Instantiate(gameLogicScript.beetlePrefab, transform.position, Quaternion.identity);
+                }
+                break;
+        }
     }
 }

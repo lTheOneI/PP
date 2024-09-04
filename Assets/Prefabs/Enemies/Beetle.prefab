@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5402307185959379038}
   - component: {fileID: 6581920297679593765}
   - component: {fileID: 7685955765687734082}
+  - component: {fileID: 564038082784696129}
   m_Layer: 0
   m_Name: Beetle
   m_TagString: Beetle
@@ -173,3 +174,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &564038082784696129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5885170329446852352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12e3a305d3f1b984c8d1a5c86989eb92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

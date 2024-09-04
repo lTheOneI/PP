@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
+    public AudioSource ButtonSource;
+
     [SerializeField] TMP_Text highScoreText;
     [SerializeField] Button playBtn;
     [SerializeField] Button creditBtn;
@@ -19,11 +21,13 @@ public class StartMenu : MonoBehaviour
 
     void StartGame()
     {
+        ButtonSource.Play();
         SceneManager.LoadScene("Ingame");
     }
 
     void OpenPro5()
     {
+        ButtonSource.Play();
         Application.OpenURL("https://www.facebook.com/");
     }
 }
