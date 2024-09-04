@@ -12,6 +12,8 @@ public class EnemiesBehavior : MonoBehaviour
         Beetle
     }
 
+    UIManage uiManageScript;
+
     private int enemyHealth;
     private float enemyspeed;
     private int rate;
@@ -23,7 +25,7 @@ public class EnemiesBehavior : MonoBehaviour
 
     void Start()
     {
-
+        uiManageScript = FindObjectOfType<UIManage>();
         switch (Enemy) 
         {
             case Datatype.Ant:
@@ -64,9 +66,10 @@ public class EnemiesBehavior : MonoBehaviour
                 {
                     Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 }
-
+            
             //Gain Score
             GameLogic.currentScore = GameLogic.currentScore + addScore;
+            uiManageScript.soundSource.Play(); 
             Destroy(gameObject);
             }
     }

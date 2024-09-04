@@ -23,9 +23,10 @@ public class GameLogic : MonoBehaviour
     public GameObject cake;
     public TMP_Text coinsText;
 
-    private int spawnWaveCount = 10;
-    private int numberPerWave = 5;
+    private int spawnWaveCount = 15;
+    private int numberPerWave = 4;
     public int waveCount = 0;
+    private float timeBetweenWaves = 4f;
 
     private Vector2 spawnPos;
     private RectTransform rectTransform;
@@ -40,8 +41,8 @@ public class GameLogic : MonoBehaviour
         height = rectTransform.rect.height;
         screenSize = new Vector2(width / 130, height / 130);
 
-        //Get HighScore
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        //Get Highscore
+        highScore = PlayerPrefs.GetInt("highScore", 0);
 
         //Startthe Game
         StartCoroutine(SpawnAnts());     
@@ -71,19 +72,19 @@ public class GameLogic : MonoBehaviour
 
                 float angle = Random.Range(0f, 360f);
                 Vector2 direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
-                float distance = Random.Range(1f, 3f);
+                float distance = Random.Range(1f, 2.5f);
                 spawnPos = Vector2.zero + direction * (screenSize.magnitude / 2 + distance);
                 Instantiate(antPrefab, spawnPos,transform.rotation);
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(timeBetweenWaves);
             waveCount++;
-            if (waveCount > 9)
+            if (waveCount > spawnWaveCount -1)
             {
                 StartCoroutine(SpawnButterflies());
             }
 
         }
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
     }
 
     IEnumerator SpawnButterflies()
@@ -100,9 +101,9 @@ public class GameLogic : MonoBehaviour
                 spawnPos = Vector2.zero + direction * (screenSize.magnitude / 2 + distance);
                 Instantiate(butterflyPrefab, spawnPos, cake.transform.rotation);
             }
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(timeBetweenWaves);
             waveCount++;
-            if (waveCount > 19) 
+            if (waveCount > (2*spawnWaveCount) -1) 
             {
                 StartCoroutine(SpawnBeetle());
             }
@@ -124,8 +125,8 @@ public class GameLogic : MonoBehaviour
                 spawnPos = Vector2.zero + direction * (screenSize.magnitude / 2 + distance);
                 Instantiate(beetlePrefab, spawnPos, cake.transform.rotation);
             }
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(timeBetweenWaves);
         }
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(7f);
     }
 }

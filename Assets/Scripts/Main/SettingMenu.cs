@@ -5,18 +5,24 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using System;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 public class SettingMenu : MonoBehaviour
 {
+    UIManage uiManageScript;
+
+    [SerializeField] Button replayBtn;
+    [SerializeField] Button contactBtn;
+    [SerializeField] Button soundBtn;
+    [SerializeField] Button musicBtn;
     //[SerializeField] AudioMixer 
     [SerializeField] Slider volumeMusicSlider;
     [SerializeField] Slider volumeSoundSlider;
 
-    UIManage uIManageScript;
-
     void Start()
     {
-        uIManageScript = FindObjectOfType<UIManage>();
+        uiManageScript = FindObjectOfType<UIManage>();
         if (!PlayerPrefs.HasKey("musicVolume"))
             {
             PlayerPrefs.SetFloat("musicVolume", volumeMusicSlider.value =1);
@@ -26,7 +32,10 @@ public class SettingMenu : MonoBehaviour
             PlayerPrefs.SetFloat("soudnVolume", volumeSoundSlider.value = 1);
         }
 
-
+        replayBtn.onClick.AddListener(ReplayScene);
+        contactBtn.onClick.AddListener(ContactIn4);
+        soundBtn.onClick.AddListener(Sound);
+        musicBtn.onClick.AddListener(Music);
     }
     void OnEnable()
 
@@ -39,10 +48,46 @@ public class SettingMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat("musicVolume", volumeMusicSlider.value);
         PlayerPrefs.SetFloat("soundVolume", volumeSoundSlider.value);
-        uIManageScript.soundSource.volume = volumeSoundSlider.value;
-        uIManageScript.musicSource.volume = volumeMusicSlider.value;
+        uiManageScript.soundSource.volume = volumeSoundSlider.value;
+        uiManageScript.musicSource.volume = volumeMusicSlider.value;
         Debug.Log("Music Volume: " + PlayerPrefs.GetFloat("musicVolume"));
         Debug.Log("Sound Volume: " + PlayerPrefs.GetFloat("soundVolume"));
     }
 
+    void ReplayScene()
+    {
+        uiManageScript.StartGame();
+        uiManageScript.ContinueGame();
+    }
+
+    void ContactIn4()
+    {
+        Application.OpenURL("");
+    }
+
+    void Sound()
+    {
+        if(uiManageScript.soundSource.volume != 0) 
+        {
+            uiManageScript.soundSource.volume = 0;
+        }
+        else if (uiManageScript.soundSource.volume ==0 )
+        {
+            uiManageScript.soundSource.volume = 1;
+        }
+    }
+
+    void Music()
+    {
+        if (uiManageScript.musicSource.volume != 0)
+        {
+            uiManageScript.soundSource.volume = 0;
+            PlayerPrefs.SetFloat("soundVolume", volumeSoundSlider.value);
+        }
+        else if (uiManageScript.musicSource.volume == 0)
+        {
+            uiManageScript.musicSource.volume = 1; 
+            PlayerPrefs.SetFloat("musicVolume", volumeMusicSlider.value);
+        }
+    }
 }

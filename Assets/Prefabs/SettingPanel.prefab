@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 9137182183061984481}
   - component: {fileID: 8977238818390606248}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SoundBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -942,7 +942,7 @@ GameObject:
   - component: {fileID: 578754899610880613}
   - component: {fileID: 7013270880804261157}
   m_Layer: 5
-  m_Name: Button
+  m_Name: MusicBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1285,6 +1285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdec06cc2e68ba64393e64a75af697e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  replayBtn: {fileID: 8527024207108272999}
+  contactBtn: {fileID: 5703789061348108768}
+  soundBtn: {fileID: 8977238818390606248}
+  musicBtn: {fileID: 7013270880804261157}
   volumeMusicSlider: {fileID: 7722012005157744972}
   volumeSoundSlider: {fileID: 4405684094685183745}
 --- !u!1 &4544822800485276977

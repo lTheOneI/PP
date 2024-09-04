@@ -22,7 +22,7 @@ public class Cake : MonoBehaviour
 
     void Update()
     {
-       if (gameLogicScript.waveCount > 0) 
+       if (gameLogicScript.waveCount > 3) 
         {
             Ants = GameObject.FindGameObjectsWithTag("Ant");
             Butterflies = GameObject.FindGameObjectsWithTag("Butterfly");

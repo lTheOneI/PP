@@ -14,15 +14,19 @@ public class UIManage : MonoBehaviour
 
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject settingPanel;
+    [SerializeField] GameObject cake;
 
     public GameObject finalPanel;
     public GameObject loseText;
     public GameObject winText;
 
+    public AudioSource musicSource;
+    public AudioSource soundSource;
+
     [SerializeField] TMP_Text highScoreText;
     [SerializeField] TMP_Text finalScore;
 
-    void Start()
+    private void Start()
     {
         Button[] buttons = FindObjectsOfType<Button>();
         foreach (Button button in buttons)
@@ -36,10 +40,8 @@ public class UIManage : MonoBehaviour
                 shopBtn.onClick.AddListener(OpenClose_ShopPanel);
             }
         }
-        //Display highScore in Start Menu
-        highScoreText.text = "HIGHSCORE: " + PlayerPrefs.GetInt("HighScore");
-
-
+        musicSource.volume = PlayerPrefs.GetFloat("musicVolume");
+        musicSource.Play();
     }
 
     private void Update()
@@ -52,25 +54,21 @@ public class UIManage : MonoBehaviour
         {
             finalScore.text = "Your Score: " + GameLogic.currentScore;
         }
-        if (settingPanel.activeSelf)
-        {
-            PauseGame();
-        }
-        else if (!settingPanel.activeSelf)
-        {
-            ContinueGame();
-        }
+        
     }
 
-    void PauseGame()
+    public void PauseGame()
     {
+        musicSource.Pause();
+        Debug.Log("Music Paused");
         Time.timeScale = 0;
         continueBtn.gameObject.SetActive(true);
         pauseBtn.gameObject.SetActive(false);
     }
 
-    void ContinueGame()
+    public void ContinueGame()
     {
+        musicSource.UnPause();
         Time.timeScale = 1;
         pauseBtn.gameObject.SetActive(true);
         continueBtn.gameObject.SetActive(false);
@@ -81,8 +79,9 @@ public class UIManage : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
-    void StartGame()
+    public void StartGame()
     {
+        Destroy(cake);
         SceneManager.LoadScene("Ingame");
         GameLogic.currentScore = 0;
         GameLogic.coins = 10;
