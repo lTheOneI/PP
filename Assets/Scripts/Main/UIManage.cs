@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class UIManage : MonoBehaviour
 {
+    //Buttons
+    [Header("Buttons")]
     [SerializeField] Button playBtn;
     [SerializeField] Button mainMenuBtn;
     [SerializeField] Button pauseBtn;
@@ -12,17 +14,22 @@ public class UIManage : MonoBehaviour
     [SerializeField] Button settingBtn;
     [SerializeField] Button shopBtn;
 
+    //Objects
+    [Header("Objects")]
     [SerializeField] GameObject shopPanel;
     [SerializeField] GameObject settingPanel;
     [SerializeField] GameObject cake;
-
     public GameObject finalPanel;
     public GameObject loseText;
     public GameObject winText;
 
+    //AudioSources
+    [Header("Audio Sources")]
     public AudioSource musicSource;
     public AudioSource soundSource;
 
+    //Text to Display
+    [Header("Text Fiels")]
     [SerializeField] TMP_Text highScoreText;
     [SerializeField] TMP_Text finalScore;
 

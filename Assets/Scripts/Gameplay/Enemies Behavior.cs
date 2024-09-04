@@ -9,7 +9,9 @@ public class EnemiesBehavior : MonoBehaviour
     {
         Ant,
         Butterlfy,
-        Beetle
+        Beetle,
+        Ladybug,
+        Boss
     }
 
     UIManage uiManageScript;
@@ -20,6 +22,7 @@ public class EnemiesBehavior : MonoBehaviour
     private int addScore;
     private int enemydamage;
 
+    [Header("Choose Enemy Type")]
     public Datatype Enemy;
     [SerializeField] GameObject coinPrefab;
 
@@ -45,6 +48,18 @@ public class EnemiesBehavior : MonoBehaviour
                 enemyspeed = 0.2f;
                 addScore = 20;
                 enemydamage = 3;
+                break;
+            case Datatype.Ladybug:
+                enemyHealth = 3;
+                enemyspeed = 1f;
+                addScore = 30;
+                enemydamage = 2;
+                break;
+            case Datatype.Boss:
+                enemyHealth = 30;
+                enemyspeed = 0.3f;
+                addScore = 100;
+                enemydamage = 7;
                 break;
         }
     }

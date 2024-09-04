@@ -7,26 +7,31 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameLogic : MonoBehaviour
 {
-
     public static int currentScore;
     public static int coins =10;
     public static int highScore;
 
-    [SerializeField] GameObject antPrefab;
-    [SerializeField] GameObject butterflyPrefab;
-    [SerializeField] GameObject beetlePrefab;
-    [SerializeField] GameObject screen;
+    [Header("Enemies Prefabs")]
+    [SerializeField] public GameObject antPrefab;
+    [SerializeField] public GameObject butterflyPrefab;
+    [SerializeField] public GameObject beetlePrefab;
+    [SerializeField] public GameObject ladyBugPrefab;
+    [SerializeField] public GameObject bossPrefab;
 
+    [Header("Text Fields")]
     [SerializeField] TMP_Text currentScoreText;
     [SerializeField] TMP_Text healthText;
-
-    public GameObject cake;
     public TMP_Text coinsText;
+
+    [Header("Objects")]
+    public GameObject cake;
+    [SerializeField] GameObject screen;
 
     private int spawnWaveCount = 15;
     private int numberPerWave = 4;
-    public int waveCount = 0;
     private float timeBetweenWaves = 4f;
+
+    public int waveCount = 0;
 
     private Vector2 spawnPos;
     private RectTransform rectTransform;

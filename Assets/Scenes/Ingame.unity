@@ -553,7 +553,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1133.3, y: 130}
+  m_SizeDelta: {x: 844.18, y: 130}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &630971106
 GameObject:
@@ -2946,8 +2946,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -566.66675, y: -65}
-  m_SizeDelta: {x: 1133.3335, y: 130}
+  m_AnchoredPosition: {x: -422.1001, y: -65}
+  m_SizeDelta: {x: 844.2001, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774271838
 MonoBehaviour:
@@ -3123,8 +3123,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 566.67, y: 0}
-  m_SizeDelta: {x: 1133.3, y: 130}
+  m_AnchoredPosition: {x: 422.11005, y: 0}
+  m_SizeDelta: {x: 844.18, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1885529349
 MonoBehaviour:
@@ -3632,6 +3632,7 @@ MonoBehaviour:
   shopBtn: {fileID: 8783490}
   shopPanel: {fileID: 649521920}
   settingPanel: {fileID: 1560372872}
+  cake: {fileID: 0}
   finalPanel: {fileID: 273684390}
   loseText: {fileID: 753687274}
   winText: {fileID: 1361574172}
@@ -3654,11 +3655,13 @@ MonoBehaviour:
   antPrefab: {fileID: 3191666971644747330, guid: 256fbab473c9f6d4481efa7f77f2ca4e, type: 3}
   butterflyPrefab: {fileID: 2317943878494343176, guid: 93419c652eaad9e479887816ba7d96a3, type: 3}
   beetlePrefab: {fileID: 5885170329446852352, guid: f6c5c277e6c55fd4c8b191a96007c717, type: 3}
-  screen: {fileID: 1659126190}
+  ladyBugPrefab: {fileID: 0}
+  bossPrefab: {fileID: 0}
   currentScoreText: {fileID: 1885529349}
   healthText: {fileID: 1747469355}
-  cake: {fileID: 2062707246}
   coinsText: {fileID: 1741982138}
+  cake: {fileID: 2062707246}
+  screen: {fileID: 1659126190}
   waveCount: 0
 --- !u!4 &2090561254
 Transform:

@@ -12,7 +12,6 @@ public class Cake : MonoBehaviour
     private GameLogic gameLogicScript;
 
     GameObject[] Ants, Butterflies, Beetles;
-    string[] tags = {"Ant","Butterfly"};
     void Start()
     {
         uiManageScript = FindObjectOfType<UIManage>();

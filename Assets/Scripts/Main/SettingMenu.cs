@@ -12,11 +12,14 @@ public class SettingMenu : MonoBehaviour
 {
     UIManage uiManageScript;
 
+    [Header("Buttons")]
     [SerializeField] Button replayBtn;
     [SerializeField] Button contactBtn;
     [SerializeField] Button soundBtn;
     [SerializeField] Button musicBtn;
+
     //[SerializeField] AudioMixer 
+    [Header("Volume Slider")]
     [SerializeField] Slider volumeMusicSlider;
     [SerializeField] Slider volumeSoundSlider;
 
