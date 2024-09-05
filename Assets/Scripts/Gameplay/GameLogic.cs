@@ -47,7 +47,7 @@ public class GameLogic : MonoBehaviour
         screenSize = new Vector2(width / 130, height / 130);
 
         //Get Highscore
-        highScore = PlayerPrefs.GetInt("highScore", 0);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
 
         //Startthe Game
         StartCoroutine(SpawnAnts());     

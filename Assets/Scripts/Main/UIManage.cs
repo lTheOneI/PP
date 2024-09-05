@@ -54,11 +54,11 @@ public class UIManage : MonoBehaviour
 
     private void Update()
     {
-        if (GameLogic.currentScore >= PlayerPrefs.GetInt("HighScore"))
+        if (GameLogic.currentScore > PlayerPrefs.GetInt("HighScore"))
         {
             finalScore.text = "New Record: " + PlayerPrefs.GetInt("HighScore");
         }
-        else if (GameLogic.currentScore < PlayerPrefs.GetInt("HighScore"))
+        else if (GameLogic.currentScore <= PlayerPrefs.GetInt("HighScore"))
         {
             finalScore.text = "Your Score: " + GameLogic.currentScore;
         }
