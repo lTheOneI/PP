@@ -16,8 +16,6 @@ public class Dialouges : MonoBehaviour
         dialogueField.text = string.Empty;
         StartDialogue();
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButton(0)) 
@@ -37,6 +35,7 @@ public class Dialouges : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
+        StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
@@ -56,9 +55,6 @@ public class Dialouges : MonoBehaviour
             dialogueField.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else
-        {
-                gameObject.SetActive(false);
-        }
+
     }
 }

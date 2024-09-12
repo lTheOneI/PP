@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class UIManage : MonoBehaviour
 {
@@ -62,36 +63,56 @@ public class UIManage : MonoBehaviour
         {
             finalScore.text = "Your Score: " + GameLogic.currentScore;
         }
-        
     }
 
     public void PauseGame()
     {
+        pauseBtn.transform.DOScale(pauseBtn.transform.localScale * 1.2f, 0.1f).OnComplete(() =>
+        {
+            pauseBtn.transform.DOScale(new Vector2(1, 1), 0.1f);
+        }
+        );
         buttonSource.Play();
         musicSource.Pause();
-        Debug.Log("Music Paused");
         Time.timeScale = 0;
         continueBtn.gameObject.SetActive(true);
         pauseBtn.gameObject.SetActive(false);
+        Collider2D[] colliders = FindObjectsOfType<Collider2D>();
+        foreach(Collider2D col in colliders)
+        {
+            col.enabled = false;
+        }
     }
 
     public void ContinueGame()
     {
+        continueBtn.transform.DOScale(continueBtn.transform.localScale * 1.2f, 0.1f).OnComplete(() =>
+        {
+            continueBtn.transform.DOScale(new Vector2(1, 1), 0.1f);
+        }
+        );
         buttonSource.Play();
         musicSource.UnPause();
         Time.timeScale = 1;
         pauseBtn.gameObject.SetActive(true);
         continueBtn.gameObject.SetActive(false);
+        Collider2D[] colliders = FindObjectsOfType<Collider2D>();
+        foreach (Collider2D col in colliders)
+        {
+            col.enabled = true;
+        }
     }
 
     void GoToMainMenu()
     {
+        mainMenuBtn.transform.DOScale(new Vector2(1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
         buttonSource.Play();
         SceneManager.LoadScene("Main");
     }
 
     public void StartGame()
     {
+        playBtn.transform.DOScale(new Vector2(1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
         buttonSource.Play();
         Destroy(cake);
         SceneManager.LoadScene("Ingame");
@@ -101,6 +122,7 @@ public class UIManage : MonoBehaviour
 
     void OpenClose_ShopPanel()
     {
+        shopBtn.transform.DOScale(new Vector2(1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
         buttonSource.Play();
         if (shopPanel.activeSelf==false)
         shopPanel.SetActive(true);
@@ -109,4 +131,5 @@ public class UIManage : MonoBehaviour
         shopPanel.SetActive(false);
         }
     }
+
 }
