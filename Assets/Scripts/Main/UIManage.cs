@@ -14,6 +14,7 @@ public class UIManage : MonoBehaviour
     [SerializeField] Button continueBtn;
     [SerializeField] Button settingBtn;
     [SerializeField] Button shopBtn;
+    [SerializeField] Button closeBtn;
 
     //Objects
     [Header("Objects")]
@@ -47,6 +48,7 @@ public class UIManage : MonoBehaviour
                 pauseBtn.onClick.AddListener(PauseGame);
                 continueBtn.onClick.AddListener(ContinueGame);
                 shopBtn.onClick.AddListener(OpenClose_ShopPanel);
+                closeBtn.onClick.AddListener(CloseGame);
             }
         }
         musicSource.volume = PlayerPrefs.GetFloat("musicVolume");
@@ -103,7 +105,7 @@ public class UIManage : MonoBehaviour
         }
     }
 
-    void GoToMainMenu()
+    public void GoToMainMenu()
     {
         mainMenuBtn.transform.DOScale(new Vector2(1.2f, 1.2f), 0.1f).SetLoops(2, LoopType.Yoyo);
         buttonSource.Play();
@@ -130,6 +132,11 @@ public class UIManage : MonoBehaviour
         {
         shopPanel.SetActive(false);
         }
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 
 }

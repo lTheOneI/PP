@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.524, y: 0.30214182, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63cf5c56f8b348844bdec88d3f5e8cea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headAnt: {fileID: 0}
+  enemyHealth: 0
+  Enemy: 0
   coinPrefab: {fileID: 448796409710313013, guid: 64df56a6870079c47be446a51075bca2, type: 3}
 --- !u!50 &3069693528107655000
 Rigidbody2D:
@@ -109,7 +110,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3191666971644747330}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

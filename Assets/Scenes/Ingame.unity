@@ -882,6 +882,7 @@ MonoBehaviour:
   continueBtn: {fileID: 276548851}
   settingBtn: {fileID: 1897814408}
   shopBtn: {fileID: 8783490}
+  closeBtn: {fileID: 0}
   shopPanel: {fileID: 649521920}
   settingPanel: {fileID: 1560372872}
   cake: {fileID: 0}
@@ -939,6 +940,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2839541135555608050, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839541135555608050, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839541135555608050, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2090561252}
+    - target: {fileID: 2839541135555608050, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839541135555608050, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839541135555608050, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManage, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839541135555608050, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5054162849682627942, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1019,6 +1048,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5294752466632723143, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
+      propertyPath: m_TagString
+      value: UICoin
+      objectReference: {fileID: 0}
     - target: {fileID: 6521758128241316221, guid: d772742c6d88f3645aed6de5f7efb72e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1079,6 +1112,14 @@ PrefabInstance:
     - target: {fileID: 648708849247026611, guid: 76545b631b18b1347becb4aa545aab1a, type: 3}
       propertyPath: m_Name
       value: Cake target
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906632191131558106, guid: 76545b631b18b1347becb4aa545aab1a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906632191131558106, guid: 76545b631b18b1347becb4aa545aab1a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1906632191131558106, guid: 76545b631b18b1347becb4aa545aab1a, type: 3}
       propertyPath: m_LocalPosition.x

@@ -12,6 +12,8 @@ public class Cake : MonoBehaviour
     private GameLogic gameLogicScript;
 
     GameObject[] Ants, Butterflies, Beetles;
+
+    public int enemiesNumber;
     void Start()
     {
         uiManageScript = FindObjectOfType<UIManage>();
@@ -29,7 +31,7 @@ public class Cake : MonoBehaviour
         }
 
        //Identify number of enemy currently in game
-        int enemiesNumber = Ants.Length + Butterflies.Length + Beetles.Length;
+        enemiesNumber = Ants.Length + Butterflies.Length + Beetles.Length;
          if (enemiesNumber <1)
         {
             uiManageScript.finalPanel.SetActive(true);
